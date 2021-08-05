@@ -18,6 +18,7 @@ Pod::Spec.new do |spec|
   spec.resources = ['HDVIdeoKit/Classes/HDVideoKitResources.bundle', 'HDVIdeoKit/Classes/PLShortVideoKit.bundle','HDVIdeoKit/Classes/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/**/*.{xib}']
   spec.frameworks = "Foundation", "CoreGraphics", "UIKit", "MediaPlayer", "CoreAudio", "AudioToolbox", "Accelerate", "QuartzCore", "OpenGLES", "AVFoundation", "CoreVideo", "AVKit", "CoreMedia", "VideoToolbox", "CoreTelephony","CFNetwork", "Security"
   spec.static_framework = true
+  spec.pod_target_xcconfig = { 'VALID_ARCHS[sdk=iphonesimulator*]' => '' }
 
   spec.dependency "TZImagePickerController"
   spec.dependency "SDWebImage"
@@ -29,9 +30,9 @@ Pod::Spec.new do |spec|
   spec.dependency "YYWebImage", "~> 1.0.5"
   spec.dependency "MJExtension", "~> 3.0.13"
   spec.dependency "IQKeyboardManager", "~> 6.5.0"
-  spec.dependency 'PLMediaStreamingKit', '~> 3.0.5'
-  spec.dependency 'PLPlayerKit', '~> 3.4.6'
-  spec.dependency 'PLShortVideoKit', '~> 3.2.5'
-  spec.dependency 'WechatOpenSDK','1.8.6.2'
+  spec.dependency "PLMediaStreamingKit"
+  spec.dependency "PLPlayerKit"
+  spec.dependency "PLShortVideoKit"
+  spec.dependency "WechatOpenSDK","1.8.6.2"
   
 end
