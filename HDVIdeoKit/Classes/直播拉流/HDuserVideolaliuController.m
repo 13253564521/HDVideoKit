@@ -16,7 +16,7 @@
 #import "HDServicesManager.h"
 #import "HDVideoMessageListView.h"
 #import "HDusergouCarxiangfa.h"
-#import "HDMyViewController.h"
+
 #import "HDUkeInfoCenter.h"
 #import "HDTopImageBottomTextButton.h"
 #import "HDCommentView.h"
@@ -269,9 +269,7 @@
 
 -(void)recog {
     self.isCurrenPause = YES;
-    HDMyViewController *my = [[HDMyViewController alloc]init];
-    my.userID = self.model.userUuid;
-    [self.navigationController pushViewController:my animated:YES];
+
 }
 
 -(void)hiddnView:(BOOL )hid {

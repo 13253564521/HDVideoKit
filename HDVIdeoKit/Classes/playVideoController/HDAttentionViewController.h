@@ -7,7 +7,7 @@
 //关注
 
 #import "HDBaseViewController.h"
-#import "HDNavigationProtocol.h"
+
 #import "HDUserVideoListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setupmodel;
 @end
 
-@interface HDAttentionViewController : HDBaseViewController<HDNavigationProtocol>
+@interface HDAttentionViewController : HDBaseViewController
 @property(nonatomic , strong)NSMutableArray<HDUserVideoListModel *> *dataArr;
 @property(nonatomic , weak)id<HDAttentionViewControllerdelegate> delegate;
 @property (nonatomic, assign) NSInteger currentIndex;

@@ -6,7 +6,7 @@
 //
 
 #import "HDBaseViewController.h"
-#import "HDNavigationProtocol.h"
+
 #import "HDzhiboModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface HDuserVideolaliuController : HDBaseViewController<HDNavigationProtocol>
+@interface HDuserVideolaliuController : HDBaseViewController
 @property(nonatomic,strong) HDzhiboModel *model;
 @property(nonatomic,weak) id<HDuserVideolaliuControllerdelegate> delegate;
 

@@ -8,21 +8,17 @@ Pod::Spec.new do |spec|
                    DESC
 
   spec.homepage     = "https://github.com/13253564521/HDVideoKit.git"
-  # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
-  spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  spec.author             = { "liugaosheng" => "liu695880140@163.com" }
-  spec.platform     = :ios, "9.0"
+  spec.license      = { :type => "MIT", :file => "README.md" }
+  spec.author       = { "liugaosheng" => "liu695880140@163.com" }
+  spec.platform     = :ios, "10.0"
   spec.source       = { :git => "https://github.com/13253564521/HDVideoKit.git", :tag => spec.version }
-  spec.source_files  = "Classes", "HDVIdeoKit/Classes/**/*.{h,m,mm}", "HDVIdeoKit/Classes/**/**/*.{h,m,mm}", "HDVIdeoKit/Classes/**/**/**/*.{h,m,mm}"
-  spec.resources = ['HDVIdeoKit/Classes/HDVideoKitResources.bundle/*', 'HDVIdeoKit/Classes/PLShortVideoframework/PLShortVideoKit.bundle/*','HDVIdeoKit/Classes/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/**/*.{xib}']
-  spec.frameworks = "Foundation", "CoreGraphics", "UIKit", "MediaPlayer", "CoreAudio", "AudioToolbox", "Accelerate", "QuartzCore", "OpenGLES", "AVFoundation", "CoreVideo", "AVKit", "CoreMedia", "VideoToolbox", "CoreTelephony"
+  
+  spec.source_files  = "HDVIdeoKit/Classes/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/**/*.{h,m}"
+  spec.resources = ['HDVIdeoKit/Classes/HDVideoKitResources.bundle', 'HDVIdeoKit/Classes/PLShortVideoKit.bundle','HDVIdeoKit/Classes/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/**/*.{xib}']
+  spec.frameworks = "Foundation", "CoreGraphics", "UIKit", "MediaPlayer", "CoreAudio", "AudioToolbox", "Accelerate", "QuartzCore", "OpenGLES", "AVFoundation", "CoreVideo", "AVKit", "CoreMedia", "VideoToolbox", "CoreTelephony","CFNetwork", "Security"
+  spec.static_framework = true
 
-  spec.libraries = "iconv", "resolv", "z", "c++", "bz2"
-  spec.vendored_frameworks = ['HDVIdeoKit/UseFramework/PLMediaStreamingKit.framework',
-  'HDVIdeoKit/UseFramework/PLPlayerKit.framework','HDVIdeoKit/Classes/PLShortVideoframework/PLShortVideoKit.framework']
-  spec.user_target_xcconfig =   {'OTHER_LDFLAGS' => ['-ObjC']}
-  spec.requires_arc = true
   spec.dependency "TZImagePickerController"
   spec.dependency "SDWebImage"
   spec.dependency "PGDatePicker"
@@ -32,8 +28,10 @@ Pod::Spec.new do |spec|
   spec.dependency "MJRefresh", "~> 3.2.0"
   spec.dependency "YYWebImage", "~> 1.0.5"
   spec.dependency "MJExtension", "~> 3.0.13"
-  spec.dependency "WechatOpenSDK", "~> 1.8.6.2"
   spec.dependency "IQKeyboardManager", "~> 6.5.0"
-  spec.dependency "Qiniu", "~> 7.4.4"
+  spec.dependency 'PLMediaStreamingKit', '~> 3.0.5'
+  spec.dependency 'PLPlayerKit', '~> 3.4.6'
+  spec.dependency 'PLShortVideoKit', '~> 3.2.5'
+  spec.dependency 'WechatOpenSDK','1.8.6.2'
   
 end

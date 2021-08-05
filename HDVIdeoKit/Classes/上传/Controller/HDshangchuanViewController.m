@@ -17,8 +17,7 @@
 #import "UKRequestURLPath.h"
 #import "LHDAFNetworking.h"
 #import "HDUkeInfoCenter.h"
-#import "HDBaseTabBarController.h"
-#import "HDMyViewController.h"
+
 #import "HDTakeVideoTableViewCell.h"
 #import "HDTakeVideoModel.h"
 

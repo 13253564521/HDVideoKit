@@ -14,7 +14,6 @@
 #import "UIView+QNAnimation.h"
 #import "HDServicesManager.h"
 #import "HDzhiboModel.h"
-#import "HDBaseTabBarController.h"
 #import "HDVideoMessageListView.h"
 #import "SocketRocketUtility.h"
 #import "HDUkeInfoCenter.h"
@@ -224,12 +223,7 @@
             }
         }
     }else {
-        for (UIViewController *vc in self.navigationController.childViewControllers) {
-            if ([vc isKindOfClass:[HDBaseTabBarController class]]) {
-                HDBaseTabBarController *mainVC = (HDBaseTabBarController *)vc;
-                [self.navigationController popToViewController:mainVC animated:YES];
-            }
-        }
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 ///关注主播,不迷路
@@ -698,12 +692,7 @@
                 }
             }
         }else {
-            for (UIViewController *vc in self.navigationController.childViewControllers) {
-                if ([vc isKindOfClass:[HDBaseTabBarController class]]) {
-                    HDBaseTabBarController *mainVC = (HDBaseTabBarController *)vc;
-                    [self.navigationController popToViewController:mainVC animated:YES];
-                }
-            }
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"liveVideoLose" object:nil];
 

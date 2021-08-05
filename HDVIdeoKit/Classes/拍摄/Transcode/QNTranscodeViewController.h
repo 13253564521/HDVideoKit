@@ -8,8 +8,8 @@
 
 #import "QNBaseViewController.h"
 #import <Photos/Photos.h>
-#import "HDNavigationProtocol.h"
-@interface QNTranscodeViewController : QNBaseViewController<HDNavigationProtocol>
+
+@interface QNTranscodeViewController : QNBaseViewController
 
 @property (nonatomic, strong) PHAsset *phAsset;
 @property (nonatomic, strong) NSURL *sourceURL;

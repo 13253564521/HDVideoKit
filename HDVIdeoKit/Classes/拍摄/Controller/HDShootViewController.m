@@ -78,13 +78,13 @@
     
     NSString *videoLength = [HDUkeInfoCenter sharedCenter].userModel.videoLength;
     NSArray *array = [videoLength componentsSeparatedByString:@","];
-    self.lengthArr = @[@(10),@(0)];//array;   //测试
-    [HDUkeInfoCenter sharedCenter].userModel.liveVideo = 1; //测试
+//    self.lengthArr = @[@(10),@(0)];//array;   //测试
+//    [HDUkeInfoCenter sharedCenter].userModel.liveVideo = 1; //测试
     self.titleArrs = [NSMutableArray array];
     
     [self.titleArrs addObject:@"拍照"];
     //测试
-    [self.titleArrs addObject:@"拍10秒"];
+//    [self.titleArrs addObject:@"拍10秒"];
     for (NSString *st in array) {
         [self.titleArrs addObject:[NSString stringWithFormat:@"拍%@秒",st]];
     }

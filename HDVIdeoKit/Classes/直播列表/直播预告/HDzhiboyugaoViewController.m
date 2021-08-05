@@ -14,7 +14,6 @@
 #import "HDUkeInfoCenter.h"
 #import "HDuserVideolaliuController.h"
 #import "HDServicesManager.h"
-#import <SDWebImage.h>
 #import "HDBaseNavView.h"
 #import "HDzhiboModel.h"
 
@@ -64,8 +63,7 @@
     self.icon.layer.masksToBounds = YES;
     [self.icon yy_setImageWithURL:[NSURL URLWithString:self.model.coverUrl] placeholder: [UIImage imageNamed:HDBundleImage(@"currency/WechatIMG3175")]];
     self.contenlabel.text = self.model.title;
-    
-    [self.image1 sd_setImageWithURL:[NSURL URLWithString:self.model.photoUrl] placeholderImage:nil options:SDWebImageProgressiveLoad progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.image1 yy_setImageWithURL:[NSURL URLWithString:self.model.photoUrl] placeholder:nil options:YYWebImageOptionProgressive completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
         if (image != nil) {
             
             [selfWeak.image1 mas_makeConstraints:^(MASConstraintMaker *make) {

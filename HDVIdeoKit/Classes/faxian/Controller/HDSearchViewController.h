@@ -7,10 +7,10 @@
 //
 
 #import "HDBaseViewController.h"
-#import "HDNavigationProtocol.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HDSearchViewController : HDBaseViewController<HDNavigationProtocol>
+@interface HDSearchViewController : HDBaseViewController
 
 @end
 

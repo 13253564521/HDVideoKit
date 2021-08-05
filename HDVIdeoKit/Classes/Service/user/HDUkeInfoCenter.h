@@ -7,13 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HDUniversalHeader.h"
 
-typedef NS_ENUM(NSInteger,HDActionType)
-{
-    HTTPtest = 1,
-    HTTPuat = 2,
-    HTTPreleases = 3,
-};
 @class HDUkeInfoCenterModel,HDUkeConfigurationModel;
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *poi_keyWordUrl;
 @property (nonatomic, strong) NSString *poi_URL;
 
-@property (nonatomic, assign) HDActionType HTTPType;
+@property (nonatomic, assign) HDNetEnvironmentType HTTPType;
 @property (nonatomic, assign) int dentityStatus;//用户是否实名认证 0：否 1：是
 @property (nonatomic, assign) int carSource;//切换接口地址 1 青岛。2长春
 

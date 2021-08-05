@@ -8,8 +8,6 @@
 #import "HDusergouCarxiangfa.h"
 #import "Macro.h"
 #import "HDUkeInfoCenter.h"
-#import "BRAddressPickerView.h"
-#import "BRStringPickerView.h"
 #import "HDServicesManager.h"
 #import "HDusergouCarxiangfaModel.h"
 #import "UKNetworkHelper.h"

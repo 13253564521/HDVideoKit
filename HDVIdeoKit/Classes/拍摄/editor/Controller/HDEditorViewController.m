@@ -13,7 +13,6 @@
 #import "QNGradientView.h"
 #import "Macro.h"
 #import "HDshangchuanViewController.h"
-#import "HDBaseNavigationController.h"
 #import "QNEditorDrawStickerView.h"
 #import "QNDrawView.h"
 #import "QNTextInputView.h"

@@ -15,7 +15,6 @@
 #import "HDVideoModel.h"
 #import "HDSearchViewController.h"
 #import "HDUserReportViewController.h"
-#import "HDMyViewController.h"
 #import "HDServicesManager.h"
 #import "HDUkeInfoCenter.h"
 #import <WechatOpenSDK/WXApi.h>
@@ -366,9 +365,7 @@ static NSString *identifier_video = @"identifier_video_cell";
 }
 - (void)hd_VideoTableViewCellDidClickUserIcon:(NSString *)userID {
     self.isCurrenPause = YES;
-    HDMyViewController *my = [[HDMyViewController alloc]init];
-    my.userID = userID;
-    [self.navigationController pushViewController:my animated:YES];
+
 }
 - (void)hd_VideoTableViewCellDidClicklikeState:(BOOL)state {
     

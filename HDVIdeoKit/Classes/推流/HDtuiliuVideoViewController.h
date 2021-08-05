@@ -6,10 +6,10 @@
 //
 
 #import "HDBaseViewController.h"
-#import "HDNavigationProtocol.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HDtuiliuVideoViewController : HDBaseViewController<HDNavigationProtocol>
+@interface HDtuiliuVideoViewController : HDBaseViewController
 @property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, assign)BOOL ispopview;
 @property (nonatomic, assign)BOOL isliveVideoparticulars;//直播详情跳转过来

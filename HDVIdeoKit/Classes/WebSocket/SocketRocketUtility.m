@@ -7,6 +7,7 @@
 //
 
 #import "SocketRocketUtility.h"
+#import <SocketRocket/SocketRocket.h>
 
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
@@ -230,7 +231,7 @@ NSString * const kWebSocketdidReceiveMessageNote = @"kWebSocketdidReceiveMessage
 }
 
 #pragma mark - **************** setter getter
-- (SRReadyState)socketReadyState {
+- (NSInteger)socketReadyState {
     return self.socket.readyState;
 }
 

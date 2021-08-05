@@ -33,15 +33,15 @@
 
 @implementation HDUkeConfigurationModel
 
-- (void)setHTTPType:(HDActionType)HTTPType {
+- (void)setHTTPType:(HDNetEnvironmentType)HTTPType {
     _HTTPType = HTTPType;
      
     
     [self setnewwork:HTTPType carSource:[HDUkeInfoCenter sharedCenter].configurationModel.carSource];
 }
 
--(void)setnewwork:(HDActionType)HTTPType carSource:(int)carSource {
-    if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HTTPtest) {
+-(void)setnewwork:(HDNetEnvironmentType)HTTPType carSource:(int)carSource {
+    if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Test) {
 //        [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"http://sy.aerozhonghuan.com:81/test/yiqi/web/share/index.html?";
 //        [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"http://temp.huidi-data.com/dspapi-live/mobile";
         
@@ -54,7 +54,7 @@
         }
 
     }
-    else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HTTPuat) {
+    else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Uat) {
         if ([HDUkeInfoCenter sharedCenter].configurationModel.carSource == 1) {
         
             [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"https://uat-iov-ec.fawjiefang.com.cn/dspqdfawapi/mobile";
@@ -66,7 +66,7 @@
         }
 
     }
-    else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HTTPreleases) {
+    else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Releases) {
         
         if ([HDUkeInfoCenter sharedCenter].configurationModel.carSource == 1) {
             [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"https://jfvideo.fawjiefang.com.cn/dspqdfawapi/mobile";
@@ -92,12 +92,13 @@
 
 - (NSString *)poi_URL {
     ////示例 https://uat-iov-ec.fawjiefang.com.cn/app/api/faw/driver/suggest/tips?inGb=gbd&city=沈阳&keywords=市府恒隆&outGb=gbd
-    if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HTTPuat){
+    if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Uat){
         return @"https://uat-iov-ec.fawjiefang.com.cn/app/api/faw/driver/suggest/tips";
-    }else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HTTPreleases) {
+    }else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Releases) {
         return @"https://iov-ec.fawjiefang.com.cn/app/api/faw/driver/suggest/tips";
     }
     return @"https://uat-iov-ec.fawjiefang.com.cn/app/api/faw/driver/suggest/tips";
 }
+
 
 @end
