@@ -34,6 +34,13 @@
 @end
 
 
+@implementation HDUserCenterProfileModel
+
+
+
+@end
+
+
 @implementation HDUkeConfigurationModel
 
 - (void)setHTTPType:(HDNetEnvironmentType)HTTPType {

@@ -14,6 +14,8 @@
 #import "HDNativeNetWorking.h"
 #import "Macro.h"
 
+#import <PLMediaStreamingKit/PLMediaStreamingKit.h>
+
 @implementation HDVideoConfigurationEntry
 + (void)configUserNickName:(NSString *)nickName userName:(NSString *)userName token:(NSString *)token avatar:(NSString *)avatar HTTPType:(HDNetEnvironmentType)HTTPType dentityStatus:(int)dentityStatus {
     HDUkeConfigurationModel *model = [[HDUkeConfigurationModel alloc]init];
@@ -24,7 +26,7 @@
     model.token = token;
     
     [HDVideoConfigurationEntry settingConfiguration:model];
-    
+    [PLStreamingEnv initEnv];
 }
 
 
@@ -60,8 +62,29 @@
         
     }
     
+    [UKNetworkHelper GET:UKURL_GET_APP_UPDATE_usercenterprofile parameters:nil success:^(UKBaseRequest * _Nonnull request, id  _Nonnull response) {
+            NSNumber *code = response[@"code"];
+            if ([[code stringValue] isEqualToString:@"0"]) {
+                HDUserCenterProfileModel *profileModel = [HDUserCenterProfileModel mj_objectWithKeyValues:response[@"data"]];
+                [HDUkeInfoCenter sharedCenter].userModel.uuid = profileModel.uuid;
+                [HDUkeInfoCenter sharedCenter].userModel.phone = profileModel.username;
+                [HDUkeInfoCenter sharedCenter].userModel.state = profileModel.state;
+                [HDUkeInfoCenter sharedCenter].userModel.videoLength = profileModel.videoLength;
+                [HDUkeInfoCenter sharedCenter].userModel.nickName = profileModel.nickName;
+                [HDUkeInfoCenter sharedCenter].userModel.liveVideoDevice = profileModel.liveVideoDevice;
+                [HDUkeInfoCenter sharedCenter].userModel.avatar = profileModel.avatar;
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"获取用户信息失败，请重试!"];
+            }
+
+          } failure:^(UKBaseRequest * _Nonnull request, id _Nonnull error) {
+              [SVProgressHUD showErrorWithStatus:@"获取用户信息失败，请重试!"];
+      }];
+    
 }
 + (void)configUserName:(NSString *)userName password:(NSString *)password  HTTPType:(HDNetEnvironmentType)HTTPType  dentityStatus:(int)dentityStatus {
+    [PLStreamingEnv initEnv];
+    
     HDUkeConfigurationModel *model = [[HDUkeConfigurationModel alloc]init];
     model.HTTPType = HTTPType;
     model.username= userName;
@@ -101,6 +124,24 @@
             NSNumber *code = responseDic[@"code"];
             if ([code integerValue] == 200) {
                 [HDUkeInfoCenter sharedCenter].userModel = [HDUkeInfoCenterModel mj_objectWithKeyValues:responseDic[@"data"]];
+                [UKNetworkHelper GET:UKURL_GET_APP_UPDATE_usercenterprofile parameters:nil success:^(UKBaseRequest * _Nonnull request, id  _Nonnull response) {
+                        NSNumber *code = response[@"code"];
+                        if ([[code stringValue] isEqualToString:@"0"]) {
+                            HDUserCenterProfileModel *profileModel = [HDUserCenterProfileModel mj_objectWithKeyValues:response[@"data"]];
+                            [HDUkeInfoCenter sharedCenter].userModel.uuid = profileModel.uuid;
+                            [HDUkeInfoCenter sharedCenter].userModel.phone = profileModel.username;
+                            [HDUkeInfoCenter sharedCenter].userModel.state = profileModel.state;
+                            [HDUkeInfoCenter sharedCenter].userModel.videoLength = profileModel.videoLength;
+                            [HDUkeInfoCenter sharedCenter].userModel.nickName = profileModel.nickName;
+                            [HDUkeInfoCenter sharedCenter].userModel.liveVideoDevice = profileModel.liveVideoDevice;
+                            [HDUkeInfoCenter sharedCenter].userModel.avatar = profileModel.avatar;
+                        }else{
+                            [SVProgressHUD showErrorWithStatus:@"获取用户信息失败，请重试!"];
+                        }
+
+                      } failure:^(UKBaseRequest * _Nonnull request, id _Nonnull error) {
+                          [SVProgressHUD showErrorWithStatus:@"获取用户信息失败，请重试!"];
+                  }];
             }
         });
     } failure:^(NSString * _Nonnull error) {

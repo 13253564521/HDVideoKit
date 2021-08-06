@@ -101,7 +101,6 @@
     }];
     
     if (self.isyingjianzhibo == NO) {
-        [PLStreamingEnv initEnv];
         PLVideoCaptureConfiguration *videoCaptureConfiguration = [PLVideoCaptureConfiguration defaultConfiguration];
         videoCaptureConfiguration.previewMirrorFrontFacing = NO;
         PLAudioCaptureConfiguration *audioCaptureConfiguration = [PLAudioCaptureConfiguration defaultConfiguration];

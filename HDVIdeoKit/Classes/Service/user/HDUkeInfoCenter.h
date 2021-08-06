@@ -22,22 +22,45 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface HDUkeInfoCenterModel : NSObject
-@property (nonatomic, strong) NSString *uuid;
-@property (nonatomic, strong) NSString *phone;//手机号
-@property (nonatomic, strong) NSString *nickName;//昵称
-@property (nonatomic, strong) NSString *token;
-@property (nonatomic, strong) NSString *avatar;
-@property (nonatomic, strong) NSString *userInfoDTO;
+@property (nonatomic, copy) NSString *uuid;
+@property (nonatomic, copy) NSString *phone;//手机号
+@property (nonatomic, copy) NSString *nickName;//昵称
+@property (nonatomic, copy) NSString *token;
+@property (nonatomic, copy) NSString *avatar;
+@property (nonatomic, copy) NSString *userInfoDTO;
 @property (nonatomic, strong) NSNumber *state;
 
-@property (nonatomic, strong) NSString *videoLength;//视频拍摄长度  返回是字符串 有可能有多个 用.分开
+@property (nonatomic, copy) NSString *videoLength;//视频拍摄长度  返回是字符串 有可能有多个 用.分开
 @property (nonatomic, assign) BOOL  isNetWorktixing;
 @property (nonatomic, assign) int  liveVideo;//是否有直播权限
-@property (nonatomic, strong) NSString *liveVideoDevice;//直播设备: 1硬件, 2手机
+@property (nonatomic, copy) NSString *liveVideoDevice;//直播设备: 1硬件, 2手机
 @property (nonatomic, assign) int  xiangceindex;
 
 
 @end
+
+@interface HDUserCenterProfileModel  : NSObject
+@property (nonatomic, copy) NSString *avatar;
+@property (nonatomic, assign) NSInteger carSource;
+@property (nonatomic, assign) NSInteger commentCount;
+@property (nonatomic, assign) NSInteger fanCount;
+@property (nonatomic, assign) NSInteger followCount;
+@property (nonatomic, assign) NSInteger identityStatus;
+@property (nonatomic, assign) NSInteger lastLoginTime;
+@property (nonatomic, assign) NSInteger likeCount;
+@property (nonatomic, assign) NSInteger liveVideo;
+@property (nonatomic, copy) NSString *liveVideoDevice;;
+@property (nonatomic, assign) NSInteger momentCount;
+@property (nonatomic, copy) NSString *nickName;
+@property (nonatomic, copy) NSString *registerTime;
+@property (nonatomic, strong) NSNumber *state;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *uuid;
+@property (nonatomic, assign) NSInteger videoCount;
+@property (nonatomic, copy) NSString *videoLength;
+
+@end
+
 
 @interface HDUkeConfigurationModel : NSObject
 #warning 后期这些接口地址需要壳工程配置正式环境的地址    分享地址后面要加？ 避免拼接有问题
