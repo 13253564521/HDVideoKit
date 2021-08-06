@@ -33,6 +33,6 @@ Pod::Spec.new do |spec|
   spec.dependency "PLMediaStreamingKit"
   spec.dependency "PLPlayerKit"
   spec.dependency "PLShortVideoKit"
-  spec.dependency "WechatOpenSDK","1.8.6.2"
+  spec.dependency "WechatOpenSDK","1.8.7.1"
   
 end
