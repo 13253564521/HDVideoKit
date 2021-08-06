@@ -795,7 +795,7 @@
     NSString *urlStr = @"https://sy.smartlink.com.cn:44300/test/faw/drv/api";
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"publisherId"] = publisherId;
-    params[@"userId"] = @"A15600000001";//userId;
+    params[@"userId"] = userId;
     urlStr = [NSString stringWithFormat:@"%@%@",urlStr,UKURL_GET_APP_UPDATE_UserRelationShip];
     [HDNativeNetWorking PostWithHeaderToken:[HDUkeInfoCenter sharedCenter].userModel.token url:urlStr Params:params success:^(id  _Nonnull responseObject) {
         NSDictionary *responseObjectDic = (NSDictionary *)responseObject;
@@ -832,7 +832,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"flag"] = flag;
     params[@"publisherId"] = publisherId;
-//    params[@"userId"] = @"A15600000001";//userId;
+
     urlStr = [NSString stringWithFormat:@"%@%@",urlStr,UKURL_GET_APP_UPDATE_PayOrClearAttention];
     [HDNativeNetWorking PostWithHeaderToken:[HDUkeInfoCenter sharedCenter].userModel.token url:urlStr Params:params success:^(id  _Nonnull responseObject) {
         NSDictionary *responseObjectDic = (NSDictionary *)responseObject;

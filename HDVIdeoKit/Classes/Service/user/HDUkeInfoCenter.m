@@ -23,11 +23,14 @@
     return instance;
 }
 
+
 @end
 
 
 @implementation HDUkeInfoCenterModel
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"uuid":@"id"};
+}
 @end
 
 
@@ -41,40 +44,23 @@
 }
 
 -(void)setnewwork:(HDNetEnvironmentType)HTTPType carSource:(int)carSource {
-    if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Test) {
-//        [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"http://sy.aerozhonghuan.com:81/test/yiqi/web/share/index.html?";
-//        [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"http://temp.huidi-data.com/dspapi-live/mobile";
+    if (HTTPType == HDNetEnvironmentType_Test) {
+        [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"http://sy.aerozhonghuan.com:81/test/yiqi/web/share/index.html?";
+        [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"http://sy.smartlink-tech.com.cn:81/dspfawapi/mobile";//新测试地址
         
-        if ([HDUkeInfoCenter sharedCenter].configurationModel.carSource == 1) {
-            [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"http://sy.smartlink-tech.com.cn:81/dspqdfawshare/index.html?";
-            [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"http://sy.smartlink-tech.com.cn:81/dspqdfawapi/mobile";
-        }else {
-            [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"http://sy.smartlink-tech.com.cn:81/dspfawshare/index.html?";
-            [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"http://sy.smartlink-tech.com.cn:81/dspfawapi/mobile";
-        }
 
     }
-    else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Uat) {
-        if ([HDUkeInfoCenter sharedCenter].configurationModel.carSource == 1) {
+    else if (HTTPType == HDNetEnvironmentType_Uat) {
+        [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"http://sy.aerozhonghuan.com:81/test/yiqi/web/share/index.html?";
+        [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"http://sy.smartlink-tech.com.cn:81/dspfawapi/mobile";//新测试地址
         
-            [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"https://uat-iov-ec.fawjiefang.com.cn/dspqdfawapi/mobile";
-            [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"https://uat-iov-ec.fawjiefang.com.cn/dspqdfawshare/index.html?";
-        
-        }else {
-            [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"https://uat-iov-ec.fawjiefang.com.cn/dspapi/mobile";
-            [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"https://uat-iov-ec.fawjiefang.com.cn/dspshare/index.html?";
-        }
 
     }
-    else if ([HDUkeInfoCenter sharedCenter].configurationModel.HTTPType == HDNetEnvironmentType_Releases) {
+    else if (HTTPType == HDNetEnvironmentType_Releases) {
         
-        if ([HDUkeInfoCenter sharedCenter].configurationModel.carSource == 1) {
-            [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"https://jfvideo.fawjiefang.com.cn/dspqdfawapi/mobile";
-            [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"https://iov-ec.fawjiefang.com.cn/dspqdfawshare/index.html?";
-        }else {
-            [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"https://jfvideo.fawjiefang.com.cn/dspfawapi/mobile";
-            [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"https://iov-ec.fawjiefang.com.cn/dspfawshare/index.html?";
-        }
+        [HDUkeInfoCenter sharedCenter].configurationModel.shareURL = @"http://sy.aerozhonghuan.com:81/test/yiqi/web/share/index.html?";
+        [HDUkeInfoCenter sharedCenter].configurationModel.HTTPURL  = @"http://sy.smartlink-tech.com.cn:81/dspfawapi/mobile";//新测试地址
+        
     }
 }
 

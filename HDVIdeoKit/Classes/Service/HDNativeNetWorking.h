@@ -21,6 +21,9 @@ typedef void (^FailureBlock)(NSString *error);
 + (void)PostWithURL:(NSString *)url Params:(NSDictionary *)params success:(SuccessBlock)success failure:(FailureBlock)failure;
 ///携带请求头Token 进行请求
 + (void)PostWithHeaderToken:(NSString *)token url:(NSString *)url Params:(NSDictionary *)params success:(SuccessBlock)success failure:(FailureBlock)failure;
+
+///携带请求头 进行请求 ////测试登录请求专属
++ (void)PostWithHeaderurl:(NSString *)url Params:(NSDictionary *)params success:(SuccessBlock)success failure:(FailureBlock)failure;
 @end
 
 NS_ASSUME_NONNULL_END

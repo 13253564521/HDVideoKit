@@ -73,9 +73,9 @@ static NSString *identifier_video = @"identifier_video_cell";
     [[AVPlayerManager shareManager] removeAllPlayers];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (!self.currentIndex) return;
     [self removeObserver:self forKeyPath:@"currentIndex"];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

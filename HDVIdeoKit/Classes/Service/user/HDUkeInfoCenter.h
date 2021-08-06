@@ -23,10 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HDUkeInfoCenterModel : NSObject
 @property (nonatomic, strong) NSString *uuid;
-@property (nonatomic, strong) NSString *username;//手机号
+@property (nonatomic, strong) NSString *phone;//手机号
 @property (nonatomic, strong) NSString *nickName;//昵称
-@property (nonatomic, strong) NSString *avatar;
 @property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *avatar;
+@property (nonatomic, strong) NSString *userInfoDTO;
 @property (nonatomic, strong) NSNumber *state;
 
 @property (nonatomic, strong) NSString *videoLength;//视频拍摄长度  返回是字符串 有可能有多个 用.分开

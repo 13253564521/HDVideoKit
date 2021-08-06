@@ -116,8 +116,53 @@ NSInteger const Interval = 3;
     //设置本次请求的数据请求格式
 //    [request addValue:@"raw" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"LKR+CGbfDyDBZ1/9r9ZMqmHgFEY=" forHTTPHeaderField:@"token"];
+    [request setValue:token forHTTPHeaderField:@"token"];
     [request setValue:@"faw" forHTTPHeaderField:@"product"];
+    // 设置本次请求请求体的长度(因为服务器会根据你这个设定的长度去解析你的请求体中的参数内容)
+    [request setValue:[NSString stringWithFormat:@"%ld", bodyData.length] forHTTPHeaderField:@"Content-Length"];
+    //设置请求最长时间
+    request.timeoutInterval = Interval;
+    
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+     
+        if (data) {
+            //利用iOS自带原生JSON解析data数据 保存为Dictionary
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            success(dict);
+            
+        }else{
+            NSHTTPURLResponse *httpResponse = error.userInfo[ResponseErrorKey];
+            
+            if (httpResponse.statusCode != 0) {
+                
+                NSString *ResponseStr = [self showErrorInfoWithStatusCode:httpResponse.statusCode];
+                failure(ResponseStr);
+                
+            } else {
+                NSString *ErrorCode = [self showErrorInfoWithStatusCode:error.code];
+                failure(ErrorCode);
+            }
+        }
+    }];
+    [task resume];
+}
++ (void)PostWithHeaderurl:(NSString *)url Params:(NSDictionary *)params success:(SuccessBlock)success failure:(FailureBlock)failure {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+
+    NSError*parseError =nil;
+    NSData *bodyData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    //设置请求体
+    [request setHTTPBody:bodyData];
+    //设置本次请求的数据请求格式
+    NSDictionary *headers = @{
+      @"product": @"faw",
+      @"Content-Type": @"application/json"
+    };
+
+    [request setAllHTTPHeaderFields:headers];
+   
     // 设置本次请求请求体的长度(因为服务器会根据你这个设定的长度去解析你的请求体中的参数内容)
     [request setValue:[NSString stringWithFormat:@"%ld", bodyData.length] forHTTPHeaderField:@"Content-Length"];
     //设置请求最长时间
