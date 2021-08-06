@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   spec.dependency "PGDatePicker"
   spec.dependency "SocketRocket"
   spec.dependency "SVProgressHUD", "~> 2.2.5"
-  spec.dependency "Masonry", "~> 1.0.2"
+  spec.dependency "Masonry"
   spec.dependency "MJRefresh", "~> 3.4"
   spec.dependency "YYWebImage", "~> 1.0.5"
   spec.dependency "MJExtension", "~> 3.0.13"
