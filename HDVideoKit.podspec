@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   spec.dependency "SocketRocket"
   spec.dependency "SVProgressHUD", "~> 2.2.5"
   spec.dependency "Masonry", "~> 1.0.2"
-  spec.dependency "MJRefresh", "~> 3.2.0"
+  spec.dependency "MJRefresh", "~> 3.4"
   spec.dependency "YYWebImage", "~> 1.0.5"
   spec.dependency "MJExtension", "~> 3.0.13"
   spec.dependency "IQKeyboardManager", "~> 6.5.0"
