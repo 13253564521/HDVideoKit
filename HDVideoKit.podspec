@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
     使用Cocoapods制作的HDVideoKit,为解放行APP提供特定服务。
                    DESC
 
-  spec.homepage     = "https://github.com/13253564521/HDVideoKit.git"
+  spec.homepage     = "https://github.com/13253564521/HDVideoKit"
 
   spec.license      = { :type => "MIT", :file => "README.md" }
   spec.author       = { "liugaosheng" => "liu695880140@163.com" }
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   spec.dependency "SDWebImage"
   spec.dependency "PGDatePicker"
   spec.dependency "SocketRocket"
-  spec.dependency "SVProgressHUD", "~> 2.0.3"
+  spec.dependency "SVProgressHUD", "~> 2.2.5"
   spec.dependency "Masonry", "~> 1.0.2"
   spec.dependency "MJRefresh", "~> 3.2.0"
   spec.dependency "YYWebImage", "~> 1.0.5"
