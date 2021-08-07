@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/13253564521/HDVideoKit.git", :tag => spec.version }
   
   spec.source_files  = "HDVIdeoKit/Classes/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/**/*.{h,m}"
-  spec.private_header_files = "HDVIdeoKit/Classes/EXtend/*.h", "HDVIdeoKit/Classes/EXtend/LHDAFNetworking/*.h", "HDVIdeoKit/Classes/EXtend/Service/*.h", "HDVIdeoKit/Classes/Base/*.h", "HDVIdeoKit/Classes/Base/View/*.h"
+  spec.public_header_files = "HDVIdeoKit/Classes/Entrance/*.h", "HDVIdeoKit/Classes/拍摄/Controller/*.h", "HDVIdeoKit/Classes/直播发布/Controller/*.h", "HDVIdeoKit/Classes/举报/*.h", "HDVIdeoKit/Classes/直播列表/*.h", "HDVIdeoKit/Classes/faxian/Controller/*.h"
   spec.resources = ['HDVIdeoKit/Classes/HDVideoKitResources.bundle', 'HDVIdeoKit/Classes/PLShortVideoKit.bundle','HDVIdeoKit/Classes/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/**/*.{xib}']
   spec.frameworks = "Foundation", "CoreGraphics", "UIKit", "MediaPlayer", "CoreAudio", "AudioToolbox", "Accelerate", "QuartzCore", "OpenGLES", "AVFoundation", "CoreVideo", "AVKit", "CoreMedia", "VideoToolbox", "CoreTelephony","CFNetwork", "Security"
   spec.static_framework = true
