@@ -15,6 +15,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/13253564521/HDVideoKit.git", :tag => spec.version }
   
   spec.source_files  = "HDVIdeoKit/Classes/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/**/*.{h,m}"
+  spec.private_header_files = "HDVIdeoKit/Classes/EXtend/*.h", "HDVIdeoKit/Classes/EXtend/LHDAFNetworking/*.h", "HDVIdeoKit/Classes/EXtend/Service/*.h"
   spec.resources = ['HDVIdeoKit/Classes/HDVideoKitResources.bundle', 'HDVIdeoKit/Classes/PLShortVideoKit.bundle','HDVIdeoKit/Classes/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/**/*.{xib}']
   spec.frameworks = "Foundation", "CoreGraphics", "UIKit", "MediaPlayer", "CoreAudio", "AudioToolbox", "Accelerate", "QuartzCore", "OpenGLES", "AVFoundation", "CoreVideo", "AVKit", "CoreMedia", "VideoToolbox", "CoreTelephony","CFNetwork", "Security"
   spec.static_framework = true

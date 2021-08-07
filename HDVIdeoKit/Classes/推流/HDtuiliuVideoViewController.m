@@ -21,7 +21,8 @@
 #import "HDtuichuviewdd.h"
 #import "HDzhibolistViewController.h"
 #import "LHDAFNetworkReachabilityManager.h"
-#import "HDDiscoverBaseViewController.h"
+
+
 @interface HDtuiliuVideoViewController ()<HDFaceUnityViewDelegate,PLMediaStreamingSessionDelegate,QNFilterPickerViewDelegate,UIGestureRecognizerDelegate,PLPlayerDelegate,HDtuichuviewdddelegate>
 @property (nonatomic, strong) PLMediaStreamingSession *session;
 
@@ -214,13 +215,6 @@
 -(void)closetuichaView {
     if (self.ispopview == YES) {
         [self.navigationController popViewControllerAnimated:YES];
-    }else if (self.isliveVideoparticulars == YES) {
-        for (UIViewController *vc in self.navigationController.childViewControllers) {
-            if ([vc isKindOfClass:[HDDiscoverBaseViewController class]]) {
-                HDDiscoverBaseViewController *mainVC = (HDDiscoverBaseViewController *)vc;
-                [self.navigationController popToViewController:mainVC animated:YES];
-            }
-        }
     }else {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
@@ -683,13 +677,6 @@
         
         if (self.ispopview == YES) {
             [self.navigationController popViewControllerAnimated:YES];
-        }else if (self.isliveVideoparticulars == YES) {
-            for (UIViewController *vc in self.navigationController.childViewControllers) {
-                if ([vc isKindOfClass:[HDDiscoverBaseViewController class]]) {
-                    HDDiscoverBaseViewController *mainVC = (HDDiscoverBaseViewController *)vc;
-                    [self.navigationController popToViewController:mainVC animated:YES];
-                }
-            }
         }else {
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
