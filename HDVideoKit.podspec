@@ -24,15 +24,16 @@ Pod::Spec.new do |spec|
   spec.dependency "SDWebImage"
   spec.dependency "PGDatePicker"
   spec.dependency "SocketRocket"
-  spec.dependency "SVProgressHUD", "~> 2.2.5"
   spec.dependency "Masonry"
+  spec.dependency "PLMediaStreamingKit"
+  spec.dependency "PLPlayerKit"
+  spec.dependency "PLShortVideoKit"
+  spec.dependency "SVProgressHUD", "~> 2.2.5"
+  spec.dependency "JFWechat", "~> 1.0.0"
   spec.dependency "MJRefresh", "~> 3.4"
   spec.dependency "YYWebImage", "~> 1.0.5"
   spec.dependency "MJExtension", "~> 3.0.13"
   spec.dependency "IQKeyboardManager", "~> 6.5.0"
-  spec.dependency "PLMediaStreamingKit"
-  spec.dependency "PLPlayerKit"
-  spec.dependency "PLShortVideoKit"
-  spec.dependency "WechatOpenSDK","1.8.7.1"
+
   
 end

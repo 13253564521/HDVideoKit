@@ -9,7 +9,7 @@
 #import "Macro.h"
 #import "HDShareView.h"
 #import "HDtoppingView.h"
-#import <WechatOpenSDK/WXApi.h>
+#import <JFWechat/JFWechat.h>
 #import "HDzhibochouiangView.h"
 #import <PLPlayerKit/PLPlayerKit.h>
 #import "HDLikeView.h"

@@ -17,7 +17,7 @@
 #import "HDUserReportViewController.h"
 #import "HDServicesManager.h"
 #import "HDUkeInfoCenter.h"
-#import <WechatOpenSDK/WXApi.h>
+#import <JFWechat/JFWechat.h>
 #import "LHDAFNetworking.h"
 
 @interface HDAttentionViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,HDVideoTableViewCellDelegate,HDShareViewDelegate,HDCommentViewdelegate>
