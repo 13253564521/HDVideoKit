@@ -7,6 +7,7 @@
 //
 
 #import "HDCoomCollectionView.h"
+#import "HDUserVideoListModel.h"
 #import "HDWaterfallLayout.h"
 #import "Macro.h"
 #import "HDDiscoverCollectionViewCell.h"

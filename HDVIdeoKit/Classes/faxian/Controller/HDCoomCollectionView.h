@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HDUserVideoListModel.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol HDCoomCollectionViewDelagete <NSObject>

@@ -7,10 +7,10 @@
 //
 
 #import "HDBaseViewController.h"
-#import "HDCompilationModel.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class HDCompilationModel;
 @interface HDDiscoverViewController : HDBaseViewController
 @property (nonatomic, strong) HDCompilationModel *discoverDataModel;
 

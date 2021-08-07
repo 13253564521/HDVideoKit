@@ -12,7 +12,7 @@
 #import "HDAttentionViewController.h"
 #import "Macro.h"
 #import "HDWaterfallLayout.h"
-
+#import "HDCompilationModel.h"
 #import "UKNetworkHelper.h"
 #import "UKRequestURLPath.h"
 #import "HDshangchuanViewController.h"
