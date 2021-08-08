@@ -343,16 +343,16 @@ static NSString *identifier_video = @"identifier_video_cell";
     [HDServicesManager getPayOrClearAttentionWithPublisherId:publisherId userId:userID flag:flag block:^(BOOL isSuccess, NSDictionary * _Nullable dataDic, NSString * _Nullable alertString) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (isSuccess) {
-                if (sender.isSelected) {
-                    [SVProgressHUD showSuccessWithStatus:@"取消关注成功!"];
-                    sender.selected = NO;
-                }else{
+                if ([flag isEqualToString:@"0"]) {
                     [SVProgressHUD showSuccessWithStatus:@"关注成功!"];
                     sender.selected = YES;
+                }else{
+                    [SVProgressHUD showSuccessWithStatus:@"取消关注成功!"];
+                    sender.selected = NO;
                 }
             }else{
                 [SVProgressHUD showErrorWithStatus:[flag isEqualToString:@"0"] ? @"关注失败!" : @"取消关注失败!"];
-                if (sender.isSelected) {
+                if ([flag isEqualToString:@"0"]) {
                     sender.selected = NO;
                 }else{
                     sender.selected = YES;

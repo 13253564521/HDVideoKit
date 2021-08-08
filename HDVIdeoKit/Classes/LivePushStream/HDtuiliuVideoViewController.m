@@ -212,17 +212,14 @@
     }];
 }
 
--(void)closetuichaView {
+- (void)closetuichaView {
     if (self.ispopview == YES) {
         [self.navigationController popViewControllerAnimated:YES];
     }else {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
-///关注主播,不迷路
-- (void)foucsZhuboClick {
-    
-}
+
 // 实现 <PLPlayerDelegate> 来控制流状态的变更
 - (void)player:(nonnull PLPlayer *)player statusDidChange:(PLPlayerStatus)state {
     NSLog(@"22222:%ld",(long)state);

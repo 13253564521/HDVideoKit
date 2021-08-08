@@ -521,11 +521,10 @@
 }
 
 - (void)foucsButtonAction:(UIButton *)sender {///关注
-    sender.selected = !sender.selected;
     NSLog(@"%s",__func__);
     if ([self.delegate respondsToSelector:@selector(hd_VideoTableViewCellDidClickFoucsSender:userID:publisherId:flag:)]) {
-        [self.delegate hd_VideoTableViewCellDidClickFoucsSender:sender userID:self.model.userUuid publisherId:self.model.uuid flag:self.flag];
-   }
+        [self.delegate hd_VideoTableViewCellDidClickFoucsSender:sender userID:self.model.userUuid publisherId:self.model.uuid flag:sender.isSelected ? @"1":@"0"];
+    }
 }
 
 -(void)dianshi:(BOOL)isdianzan {

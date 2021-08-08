@@ -342,15 +342,6 @@
         make.height.mas_equalTo(1);
     }];
     
-
-        
-
-    
-
-
-    
-
-
     
     self.coverImage = [self getVideoPreViewImage:self.url];
     self.fenmianImage.image = self.coverImage;
@@ -549,7 +540,7 @@
         usedArray = @[@"牵引",@"载货",@"自卸",@"专用"];
     }
     
-    HDCustomMyPickerViewController *vc = [[HDCustomMyPickerViewController alloc]initWithTitle:@"意向车型" leftDataArray:provinceArray rightData:usedArray componenttitle:@"车型" dataArraytitle:@"用途"];
+    HDCustomMyPickerViewController *vc = [[HDCustomMyPickerViewController alloc]initWithTitle:@"意向车型" leftDataArray:provinceArray rightData:usedArray componenttitle:@"车系" dataArraytitle:@"车型"];
     [self.navigationController presentViewController:vc animated:NO completion:nil];
     
     @WeakObj(self);
@@ -657,10 +648,12 @@
     
     self.selecfabu = YES;
     if (self.textView.text.length <= 0) {
+        self.selecfabu = NO;
         return [SVProgressHUD showErrorWithStatus:@"请填写标题"];
     }
     
     if ([self.carModel isEqual:@""] || self.carModel == nil) {
+        self.selecfabu = NO;
         return [SVProgressHUD showErrorWithStatus:@"请填车系和车型信息"];
     }
     

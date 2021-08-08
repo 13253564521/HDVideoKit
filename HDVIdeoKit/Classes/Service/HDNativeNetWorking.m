@@ -108,8 +108,8 @@ NSInteger const Interval = 3;
     [request setHTTPMethod:@"POST"];
     
     //把字典中的参数进行拼接
-    NSString *body = [self dealWithParam:params];
-    NSData *bodyData = [body dataUsingEncoding:NSUTF8StringEncoding];
+    NSError*parseError =nil;
+    NSData *bodyData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:&parseError];
     
     //设置请求体
     [request setHTTPBody:bodyData];

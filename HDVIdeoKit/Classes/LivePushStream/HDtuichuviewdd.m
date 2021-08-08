@@ -55,7 +55,7 @@
 - (IBAction)foucsClick:(UIButton *)sender {
     sender.selected = !sender.selected;
     if ([self.delegate respondsToSelector:@selector(foucsZhuboClickWithSender:UserID:publisherId:flag:)]) {
-        [self.delegate foucsZhuboClickWithSender:sender UserID:self.model.userUuid publisherId:self.model.uuid flag:self.flag];
+        [self.delegate foucsZhuboClickWithSender:sender UserID:self.model.userUuid publisherId:self.model.uuid flag:sender.isSelected ? @"1" : @"0"];
     }
 }
 
