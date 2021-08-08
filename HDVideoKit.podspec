@@ -13,7 +13,8 @@ Pod::Spec.new do |spec|
   spec.author       = { "liugaosheng" => "liu695880140@163.com" }
   spec.platform     = :ios, "10.0"
   spec.source       = { :git => "https://github.com/13253564521/HDVideoKit.git", :tag => spec.version }
-  spec.source_files  = "HDVIdeoKit/Classes/Entrance/*.{h,m}", "HDVIdeoKit/Classes/Shoot/Controller/*.{h,m}", "HDVIdeoKit/Classes/LiveRelease/Controller/*.{h,m}", "HDVIdeoKit/Classes/Report/*.{h,m}", "HDVIdeoKit/Classes/LiveList/*.{h,m}", "HDVIdeoKit/Classes/faxian/Controller/*.{h,m}"
+  spec.source_files  = "HDVIdeoKit/Classes/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/*.{h,m}", "HDVIdeoKit/Classes/**/**/**/*.{h,m}"
+  spec.public_header_files = "HDVIdeoKit/Classes/Entrance/*.h", "HDVIdeoKit/Classes/Shoot/Controller/*.h", "HDVIdeoKit/Classes/LiveRelease/Controller/*.h", "HDVIdeoKit/Classes/Report/*.h", "HDVIdeoKit/Classes/LiveList/*.h", "HDVIdeoKit/Classes/faxian/Controller/*.h"
   spec.resources = ['HDVIdeoKit/Classes/HDVideoKitResources.bundle', 'HDVIdeoKit/Classes/PLShortVideoKit.bundle','HDVIdeoKit/Classes/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/*.{xib}', 'HDVIdeoKit/Classes/**/**/**/*.{xib}']
   spec.frameworks = "Foundation", "CoreGraphics", "UIKit", "MediaPlayer", "CoreAudio", "AudioToolbox", "Accelerate", "QuartzCore", "OpenGLES", "AVFoundation", "CoreVideo", "AVKit", "CoreMedia", "VideoToolbox", "CoreTelephony","CFNetwork", "Security"
   spec.static_framework = true
