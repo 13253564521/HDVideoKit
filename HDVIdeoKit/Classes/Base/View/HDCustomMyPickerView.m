@@ -21,6 +21,7 @@
 }
 // pickerview  创建
 @property (nonatomic ,strong)UIView *toolsView;
+@property (nonatomic ,strong)UIView *pikerContentView;
 @property (nonatomic ,strong)UIPickerView *picerView;
 
 @property (nonatomic ,strong)NSArray *componentArray;
@@ -130,13 +131,17 @@
         }
         
         
-        _picerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - pikerH, SCREEN_WIGHT, pikerH)];
+        _pikerContentView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - pikerH, SCREEN_WIGHT, pikerH)];
+        [self addSubview:_pikerContentView];
+        CAGradientLayer *pikergradientLayer = [self getGradientLayerWithBounds:_pikerContentView.bounds colorsArray:[NSArray arrayWithObjects:(id)[RGBA(249, 249, 249, 1) CGColor], (id)[RGBA(222, 225, 231, 1) CGColor], nil]];
+        [_pikerContentView.layer insertSublayer:pikergradientLayer atIndex:0];
+        
+        _picerView = [[UIPickerView alloc] initWithFrame:_pikerContentView.bounds];
         _picerView.dataSource = self;
         _picerView.delegate = self;
         [_picerView selectRow:0 inComponent:0 animated:YES];
-        [self addSubview:_picerView];
-        CAGradientLayer *pikergradientLayer = [self getGradientLayerWithBounds:_picerView.bounds colorsArray:[NSArray arrayWithObjects:(id)[RGBA(249, 249, 249, 1) CGColor], (id)[RGBA(222, 225, 231, 1) CGColor], nil]];
-        [_picerView.layer insertSublayer:pikergradientLayer atIndex:0];
+        [_pikerContentView addSubview:_picerView];
+
         
     }
     return self;
@@ -291,7 +296,6 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     UILabel *piketLabel =  (UILabel *)[pickerView viewForRow:row forComponent:component];
-
     piketLabel.textColor = RGBA(0, 61, 227, 1);
     
     
@@ -327,7 +331,7 @@
     __weak typeof (self)weakSelf = self;
     __weak typeof(UIView *)blockView = _toolsView;
     __weak typeof(UIView *)blocktitleView = _titleView;
-    __weak typeof(UIPickerView *)blockPickerViwe = _picerView;
+    __weak typeof(UIView *)blockPickerViwe = _pikerContentView;
     [UIView animateWithDuration:0.3 animations:^{
         blockView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 62);
         blockPickerViwe.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIGHT, 290);

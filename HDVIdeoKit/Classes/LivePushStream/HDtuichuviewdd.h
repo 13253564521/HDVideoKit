@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///关注主播,不迷路
 - (void)foucsZhuboClickWithSender:(UIButton *)sender UserID:(NSString *)userID publisherId:(NSString *)publisherId flag:(NSString *)flag;
 ///点击主播用户头像
-- (void)anchorUserIconDidClick;
+- (void)anchorUserIconDidClickWithuserID:(NSString *)userID;
 
 @end
 

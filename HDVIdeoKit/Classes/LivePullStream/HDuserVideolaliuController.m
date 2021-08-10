@@ -28,7 +28,7 @@
 #import "AVPlayerView.h"
 #import "HDproxy.h"
 #import "HDtuichuviewdd.h"
-
+#import "HDzhiboModel.h"
 
 // 每一秒发送多少条消息
 #define MAXCOUNT  30
@@ -267,10 +267,7 @@
     }
 }
 
--(void)recog {
-    self.isCurrenPause = YES;
 
-}
 
 -(void)hiddnView:(BOOL )hid {
     self.heaberImage.hidden = hid;
@@ -1538,8 +1535,11 @@
     }];
 }
 ///点击主播用户头像
-- (void)anchorUserIconDidClick {
-    [self recog];
+- (void)anchorUserIconDidClickWithuserID:(NSString *)userID {
+    self.isCurrenPause = YES;
+    if ([self.hdprotocol respondsToSelector:@selector(hd_videoProtocolDidClickUserIconWithUserId:)]) {
+        [self.hdprotocol hd_videoProtocolDidClickUserIconWithUserId:userID];
+    }
 }
 #pragma mark - customfunc
 //图片在上，文字在下

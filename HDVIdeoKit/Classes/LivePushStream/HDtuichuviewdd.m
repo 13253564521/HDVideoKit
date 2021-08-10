@@ -68,8 +68,8 @@
 
 
 - (void)userIconClick {
-    if ([self.delegate respondsToSelector:@selector(anchorUserIconDidClick)]) {
-        [self.delegate anchorUserIconDidClick];
+    if ([self.delegate respondsToSelector:@selector(anchorUserIconDidClickWithuserID:)]) {
+        [self.delegate anchorUserIconDidClickWithuserID:self.model.userUuid];
     }
 }
 

@@ -19,6 +19,7 @@
 #import "HDUkeInfoCenter.h"
 #import <JFWechat/JFWechat.h>
 #import "LHDAFNetworking.h"
+#import "HDUserVideoListModel.h"
 
 @interface HDAttentionViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,HDVideoTableViewCellDelegate,HDShareViewDelegate,HDCommentViewdelegate>
 /** tableView */
@@ -32,6 +33,8 @@
 @property(nonatomic , strong)UIView *topView;
 
 @property (nonatomic, assign) BOOL  isCurrenPause;
+
+
 
 
 @end
@@ -73,7 +76,6 @@ static NSString *identifier_video = @"identifier_video_cell";
     [[AVPlayerManager shareManager] removeAllPlayers];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (!self.currentIndex) return;
     [self removeObserver:self forKeyPath:@"currentIndex"];
     
 }
@@ -201,7 +203,6 @@ static NSString *identifier_video = @"identifier_video_cell";
     [self.tableView reloadData];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (!self.currentIndex) return;
         NSIndexPath *curIndexPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
         [self.tableView scrollToRowAtIndexPath:curIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         [self addObserver:self forKeyPath:@"currentIndex" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew context:nil];
@@ -365,7 +366,9 @@ static NSString *identifier_video = @"identifier_video_cell";
 }
 - (void)hd_VideoTableViewCellDidClickUserIcon:(NSString *)userID {
     self.isCurrenPause = YES;
-
+    if ([self.hdprotocol respondsToSelector:@selector(hd_videoProtocolDidClickUserIconWithUserId:)]) {
+        [self.hdprotocol hd_videoProtocolDidClickUserIconWithUserId:userID];
+    }
 }
 - (void)hd_VideoTableViewCellDidClicklikeState:(BOOL)state {
     
@@ -432,6 +435,8 @@ static NSString *identifier_video = @"identifier_video_cell";
                   [self.dataArr removeObjectAtIndex:self.currentIndex];
                   [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.currentIndex inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
               }
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"删除失败，请稍后重试!"];
         }
     }];
 }

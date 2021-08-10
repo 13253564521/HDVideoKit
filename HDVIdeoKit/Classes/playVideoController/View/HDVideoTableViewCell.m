@@ -47,6 +47,8 @@
 
 /** 是否关注标识 */
 @property(nonatomic,copy) NSString *flag;
+/** 当前视频详情Model */
+@property(nonatomic , strong)HDUserVideoListModel *cellDetailModel;
 @end
 @implementation HDVideoTableViewCell
 
@@ -265,32 +267,13 @@
 -(void)setModel:(HDUserVideoListModel *)model {
     _model = model;
     [self getUserRelationShipWithModel:model];
-    
-    self.title.text = [NSString stringWithFormat:@"@%@",model.nickName];
-    
-    self.likeView.likeCount.text = [self stringToInt:[model.likeCount stringValue]];
-    self.detailTitle.text = model.title;
-    self.userIconImageView.yy_imageURL = [NSURL URLWithString:model.avatar];
-    [self.userIconImageView yy_setImageWithURL:[NSURL URLWithString:model.avatar] placeholder: [UIImage imageNamed:HDBundleImage(@"currency/WechatIMG3175")]];
+    [self updateVideoDetailWithModel:model];
 
-    NSDate *date = [[NSDate alloc]init];
-    self.timetitle.text = [date timeStringWithTimeInterval:model.createTime];
-    if ([model.userUuid isEqualToString:[HDUkeInfoCenter sharedCenter].userModel.uuid]) {
-        [self.reportButton setImage:[UIImage imageNamed:HDBundleImage(@"discover/icon_5_delete")] forState:UIControlStateNormal];
-        [self.reportButton setTitle:@"" forState:UIControlStateNormal];
-
-    }else {
-        [self.reportButton setImage:[UIImage imageNamed:HDBundleImage(@"discover/icon_report")] forState:UIControlStateNormal];
-        [self.reportButton setTitle:@"举报" forState:UIControlStateNormal];
-    }
-    
-    self.likeView.likeAfter.hidden = !model.isLiked;
-
-        
+    @WeakObj(self);
     [HDServicesManager getVideoXiaqCouponDataWithResulblock:self.model.uuid black:^(BOOL isSuccess, HDUserVideoListModel * _Nullable cellModel, NSString * _Nullable alertString) {
         if (isSuccess == YES) {
-            
-            [self.commentButton setTitle:[NSString stringWithFormat:@"%@",[self stringToInt:cellModel.commentCount]] forState:UIControlStateNormal];
+            selfWeak.cellDetailModel = cellModel;
+            [selfWeak updateVideoDetailWithModel:cellModel];
         }
     }];
    
@@ -500,6 +483,9 @@
     }
 }
 - (void)commentButtonAction:(UIButton *)sender {
+    if (self.cellDetailModel.showCmt == 0) {
+        return [SVProgressHUD showErrorWithStatus:@"您还没有查看评论的权限哦！"];
+    }
 
     if ([self.delegate respondsToSelector:@selector(hd_VideoTableViewCellDidClickComment:)]) {
         [self.delegate hd_VideoTableViewCellDidClickComment:@"0"];
@@ -572,7 +558,31 @@
     CGSize titleSize = button.titleLabel.bounds.size;
     [button setImageEdgeInsets:UIEdgeInsetsMake(0,0, titleSize.height + interval, -(titleSize.width))];
 }
+#pragma mark - 更新用户信息
+- (void)updateVideoDetailWithModel:(HDUserVideoListModel *) model{
+    
+    self.title.text = [NSString stringWithFormat:@"@%@",model.nickName];
+    
+    self.likeView.likeCount.text = [self stringToInt:[model.likeCount stringValue]];
+    self.detailTitle.text = model.title;
+    [self.userIconImageView yy_setImageWithURL:[NSURL URLWithString:model.avatar] placeholder: [UIImage imageNamed:HDBundleImage(@"currency/WechatIMG3175")]];
 
+    
+    if ([model.userUuid isEqualToString:[HDUkeInfoCenter sharedCenter].userModel.uuid]) {
+        [self.reportButton setImage:[UIImage imageNamed:HDBundleImage(@"discover/icon_5_delete")] forState:UIControlStateNormal];
+        [self.reportButton setTitle:@"" forState:UIControlStateNormal];
+
+    }else {
+        [self.reportButton setImage:[UIImage imageNamed:HDBundleImage(@"discover/icon_report")] forState:UIControlStateNormal];
+        [self.reportButton setTitle:@"举报" forState:UIControlStateNormal];
+    }
+    
+    self.likeView.likeAfter.hidden = !model.isLiked;
+    
+    NSDate *date = [[NSDate alloc]init];
+    self.timetitle.text = [date timeStringWithTimeInterval:model.createTime];
+    [self.commentButton setTitle:[NSString stringWithFormat:@"%@",[self stringToInt:model.commentCount]] forState:UIControlStateNormal];
+}
 #pragma mark - 查询关系
 - (void)getUserRelationShipWithModel:(HDUserVideoListModel *)model
 {
