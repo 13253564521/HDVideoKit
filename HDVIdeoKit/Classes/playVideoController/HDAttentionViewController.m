@@ -17,7 +17,8 @@
 #import "HDUserReportViewController.h"
 #import "HDServicesManager.h"
 #import "HDUkeInfoCenter.h"
-#import <JFWechat/JFWechat.h>
+//#import <JFWechat/JFWechat.h>
+#import <WechatOpenSDK/WXApi.h>
 #import "LHDAFNetworking.h"
 #import "HDUserVideoListModel.h"
 
