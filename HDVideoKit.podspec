@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "HDVideoKit"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "HDVideoKit,为解放行APP提供特定服务"
   spec.description  = <<-DESC
     使用Cocoapods制作的HDVideoKit,为解放行APP提供特定服务。
